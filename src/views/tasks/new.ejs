@@ -1,0 +1,35 @@
+<%- include('../layouts/header', {title:'Edit List'}) %>
+
+<%- include('../layouts/menu') %> 
+
+<section class="section">
+    <div class="container">
+      <h1 class="title size-4">New Task</h1>
+
+      <form method="POST" action="/checklists/<%= listId %>/tasks" >
+        <div class="field">
+          <label class="label">Name: </label>
+          <div class="control">
+            <input class="input" type="text" name="task[name]" placeholder="Task List"
+              value="<%= task.name %>" />
+      
+            <% if( task.errors ){ %>
+              <p class="is-danger help">
+                <%= task.errors %>
+                  <br/>
+                <%=task.errors._message %>
+              </p>
+              <% } %>
+      
+          </div>
+        </div>
+      
+        <button type="submit" class="button is-success">Salvar</button>
+        <a href="/checklists/<%= listId %>" class="button">Cancelar</a>
+      </form>
+
+    </div>
+</section>
+
+
+<%- include('../layouts/footer') %>

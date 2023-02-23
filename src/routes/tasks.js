@@ -29,7 +29,7 @@ TasksDependentRoute.post('/:id/tasks', async (req, res) => {
 
         res.status(200).redirect('/checklists/'+req.params.id)
     }catch(errors){
-        res.status(500).render('tasks/new',{listId: req.params.id,task:{...task,errors:errors}})
+        res.status(500).render('/tasks/new',{listId: req.params.id,task:{...task,errors:errors}})
     }
 });
 
@@ -53,7 +53,6 @@ simpleRouter.put('/:id', async (req, res) => {
 
     try{
         task.set(req.body.task);
-        console.log(req.body.task)
         await task.save();
         res.status(200).json({ task });
     } catch(error){
